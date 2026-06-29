@@ -1,53 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graduación Isaac Gregory</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
-  <title>Graduación Isaac Gregory</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ============================================================
-       PORTADA
-  ============================================================ -->
-  <div class="portada-overlay" id="portada-overlay">
+  <div id="portada-overlay" class="portada-overlay">
     <div class="portada-contenido">
-      <!-- ESCUDO -->
-      <div class="escudo-wrap">
-        <svg class="escudo-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M100 15 L180 55 L180 145 L100 185 L20 145 L20 55 L100 15Z" 
-                stroke="#D4A520" stroke-width="2.5" fill="rgba(212,165,32,0.06)"/>
-          <path d="M100 30 L165 63 L165 137 L100 170 L35 137 L35 63 L100 30Z" 
-                stroke="#D4A520" stroke-width="1" fill="none" opacity="0.3"/>
-          <text x="100" y="75" text-anchor="middle" font-family="Cinzel, serif" font-size="13" font-weight="700" fill="#D4A520" letter-spacing="1.5">ESCUELA</text>
-          <text x="100" y="93" text-anchor="middle" font-family="Cinzel, serif" font-size="13" font-weight="700" fill="#D4A520" letter-spacing="1.5">PRIMARIA</text>
-          <text x="100" y="130" text-anchor="middle" font-family="Cinzel, serif" font-size="22" font-weight="700" fill="#D4A520" letter-spacing="0.5">MANUEL L.</text>
-          <text x="100" y="156" text-anchor="middle" font-family="Cinzel, serif" font-size="24" font-weight="700" fill="#D4A520" letter-spacing="1">BARRAGÁN</text>
-          <polygon points="100,175 102,181 108,181 103,185 105,191 100,187 95,191 97,185 92,181 98,181" 
-                   fill="#D4A520" opacity="0.4"/>
-        </svg>
-      </div>
-
-      <h1 class="portada-titulo">GRADUACIÓN</h1>
-      <p class="portada-generacion">GENERACIÓN 2020 – 2026</p>
-      <p class="portada-fecha">Miércoles 1 de Julio de 2026 · 10:00 AM</p>
-
-      <div class="portada-linea"></div>
-      <p class="portada-cta">Toca para entrar</p>
-      <div class="portada-flecha">▼</div>
+      <p class="portada-sub">INVITACIÓN EXCLUSIVA</p>
+      <h1 class="portada-titulo">ISAAC GREGORY</h1>
+      <p class="portada-evento">Graduación de Primaria</p>
+      <hr class="portada-separador">
+      <button id="btn-ingresar" class="btn-primario">ABRIR INVITACIÓN</button>
     </div>
   </div>
 
-  <!-- ============================================================
-       MAIN
-  ============================================================ -->
-  <main id="main-content" style="display:none;">
-
-    <!-- Botón música -->
+  <main id="main-content" class="hidden">
+    
     <div class="music-bar" id="music-bar">
       <button class="music-btn" id="music-btn" aria-label="Reproducir música">
         <span class="music-icon">▶</span>
@@ -55,172 +30,76 @@
       <audio id="audio-player" loop></audio>
     </div>
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
     <section class="hero" id="hero">
-      <div class="hero-foto-bg" id="hero-foto-bg"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-fade"></div>
       <div class="hero-content">
-        <h1 class="hero-nombre" id="hero-nombre">ISAAC GREGORY</h1>
-        <div class="countdown-wrap">
-          <div class="countdown-grid">
-            <div class="countdown-item">
-              <span class="countdown-num" id="cd-dias">00</span>
-              <span class="countdown-label">DÍAS</span>
-            </div>
-            <span class="countdown-sep">:</span>
-            <div class="countdown-item">
-              <span class="countdown-num" id="cd-horas">00</span>
-              <span class="countdown-label">HORAS</span>
-            </div>
-            <span class="countdown-sep">:</span>
-            <div class="countdown-item">
-              <span class="countdown-num" id="cd-min">00</span>
-              <span class="countdown-label">MIN</span>
-            </div>
-            <span class="countdown-sep">:</span>
-            <div class="countdown-item">
-              <span class="countdown-num" id="cd-seg">00</span>
-              <span class="countdown-label">SEG</span>
-            </div>
-          </div>
-        </div>
-        <p class="hero-fecha" id="hero-fecha"></p>
+        <p class="hero-subtitulo" id="hero-subtitulo"></p>
+        <h1 class="hero-nombre" id="hero-nombre"></h1>
+        <p class="hero-gen" id="hero-generacion"></p>
       </div>
     </section>
 
-    <!-- =====================================================
-         MENSAJE PERSONAL (Cinzel, 4 líneas centradas)
-    ====================================================== -->
-    <section class="mensaje-section seccion-base">
-      <div class="mensaje-caja">
-        <p class="seccion-mensaje" id="mensaje-personal"></p>
-      </div>
-    </section>
-
-    <!-- =====================================================
-         FAMILIA ("CON EL AMOR DE" DENTRO de la caja)
-    ====================================================== -->
-    <section class="familia-section seccion-alt">
-      <div class="familia-caja">
-        <p class="familia-label">CON EL AMOR DE</p>
+    <section class="seccion-contenedor">
+      <div class="caja-info">
+        <p class="mensaje-personal" id="mensaje-personal"></p>
+        <div class="linea-decorativa"></div>
         <p class="familia-texto" id="familia-texto"></p>
       </div>
     </section>
 
-    <!-- =====================================================
-         GALERÍA
-    ====================================================== -->
-    <section class="galeria-section seccion-base" id="galeria-section">
-      <p class="seccion-titulo">INSTANTES DE ISAAC</p>
-      <div class="galeria-contador" id="galeria-contador">1 / 1</div>
-      <div class="galeria-stack" id="galeria-stack"></div>
-      <div class="galeria-hint">👆</div>
-    </section>
-
-    <!-- =====================================================
-         CEREMONIA
-    ====================================================== -->
-    <section class="ceremonia-section seccion-alt" id="ceremonia-section">
-      <div class="evento-card">
-        <p class="evento-tipo">Ceremonia escolar</p>
-        <p class="evento-nombre" id="ceremonia-nombre"></p>
-        <p class="evento-detalle" id="ceremonia-fecha-hora"></p>
-        <div class="mapa-embed" id="ceremonia-mapa"></div>
-        <a class="btn-primario" id="btn-ceremonia" target="_blank" rel="noopener">Abrir en Google Maps</a>
-      </div>
-    </section>
-
-    <!-- =====================================================
-         RESTAURANTE
-    ====================================================== -->
-    <section class="restaurante-section seccion-alt" id="restaurante-section">
-      <div class="evento-card">
-        <p class="evento-tipo">Festejo de graduación</p>
-        <p class="evento-nombre" id="restaurante-nombre"></p>
-        <div class="salon-foto-wrap">
-          <img src="assets/photos/kurai.jpg" alt="Kurai Citadel" class="salon-foto" />
+    <section class="seccion-contenedor">
+      <h2 class="seccion-titulo">Ubicaciones y Horarios</h2>
+      
+      <div class="grid-eventos">
+        <div class="caja-info tarjeta-evento">
+          <div class="icono-evento">⛪</div>
+          <h3>Ceremonia Religiosa</h3>
+          <h4 id="ceremonia-nombre"></h4>
+          <p class="evento-dato" id="ceremonia-fecha"></p>
+          <p class="evento-dato" id="ceremonia-hora"></p>
+          <p class="evento-dir" id="ceremonia-direccion"></p>
+          <div class="mapa-container" id="ceremonia-mapa"></div>
+          <a id="btn-ceremonia" target="_blank" class="btn-secundario">Ver en Google Maps</a>
         </div>
-        <p class="evento-nota" id="restaurante-nota"></p>
-        <a class="btn-primario" id="btn-restaurante" target="_blank" rel="noopener">Abrir en Google Maps</a>
+
+        <div class="caja-info tarjeta-evento">
+          <div class="icono-evento">🍽️</div>
+          <h3>Celebración</h3>
+          <h4 id="restaurante-nombre"></h4>
+          <p class="evento-nota" id="restaurante-nota"></p>
+          <p class="evento-dir" id="restaurante-direccion"></p>
+          <div class="imagen-restaurante-container">
+            <img id="restaurante-img" src="" alt="Lugar de celebración" class="restaurante-foto">
+          </div>
+          <a id="btn-restaurante" target="_blank" class="btn-secundario">Ver Ubicación</a>
+        </div>
       </div>
     </section>
 
-    <!-- =====================================================
-         PROGRAMA
-    ====================================================== -->
-    <section class="programa-section seccion-base hidden" id="programa-section">
-      <p class="seccion-titulo">PROGRAMA</p>
-      <div class="programa-lista" id="programa-lista"></div>
-    </section>
-
-    <!-- =====================================================
-         DRESS CODE
-    ====================================================== -->
-    <section class="dresscode-section seccion-alt" id="dresscode-section">
-      <div class="dresscode-card">
-        <p class="dresscode-titulo">CÓDIGO DE VESTIMENTA</p>
+    <section class="seccion-contenedor text-center">
+      <div class="caja-info">
+        <h2 class="dresscode-titulo">Código de Vestimenta</h2>
         <div class="dresscode-linea"></div>
         <p class="dresscode-texto" id="dresscode-texto"></p>
       </div>
     </section>
 
-    <!-- =====================================================
-         CONFIRMACIÓN
-    ====================================================== -->
-    <section class="confirmacion-section seccion-base">
-      <div class="caja">
-        <p class="seccion-titulo">¿PODEMOS CONTAR CONTIGO?</p>
-        <p class="confirmacion-copy" id="confirmacion-copy"></p>
-        <a class="btn-primario" id="btn-confirmar" target="_blank" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D0D0D" style="flex-shrink:0">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2"/>
-          </svg>
-          Confirmar asistencia
-        </a>
+    <section class="seccion-contenedor">
+      <h2 class="seccion-titulo">Nuestra Trayectoria</h2>
+      <div class="galeria-slider-container">
+        <button class="slider-nav prev" id="slide-prev">❮</button>
+        <div class="galeria-track" id="galeria-track"></div>
+        <button class="slider-nav next" id="slide-next">❯</button>
       </div>
     </section>
 
-    <!-- =====================================================
-         CALENDARIO
-    ====================================================== -->
-    <section class="calendario-section seccion-base">
-      <div class="caja">
-        <p class="calendario-hint">¡Guarda la fecha para no olvidarla!</p>
-        <a class="btn-secundario" id="btn-calendario">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink:0">
-            <rect x="3" y="4" width="18" height="18" rx="2" stroke="#D4A520" stroke-width="2"/>
-            <path d="M3 9h18M8 2v4M16 2v4" stroke="#D4A520" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          Guardar en mi calendario
-        </a>
-        <p class="compartir-hint">¿Vas a tomar fotos? ¡Etiquétanos!</p>
-        <div class="compartir-iconos">
-          <a id="compartir-ig" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-              <rect x="2" y="2" width="20" height="20" rx="5" stroke="#888880" stroke-width="2"/>
-              <circle cx="12" cy="12" r="4" stroke="#888880" stroke-width="2"/>
-              <circle cx="17.5" cy="6.5" r="1.2" fill="#888880"/>
-            </svg>
-          </a>
-          <a id="compartir-fb" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="#888880">
-              <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer seccion-base">
-      <p>Creado con <span class="footer-corazon">♥</span> por <strong>Komorebi</strong></p>
+    <footer>
+      <p>Te esperamos para celebrar juntos este gran logro.</p>
+      <p style="margin-top: 10px; color: var(--dorado); letter-spacing: 2px; font-size: 11px;">KOMOREBI INVITACIONES DIGITALES</p>
     </footer>
 
   </main>
 
-  <script src="data/event.js"></script>
+  <script src="event.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

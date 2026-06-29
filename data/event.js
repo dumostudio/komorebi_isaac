@@ -1,54 +1,39 @@
 const EVENT = {
-
-  nombre:       "Isaac Gregory",
-  subtitulo:    "GRADUACIÓN PRIMARIA",
-  generacion:   "2020 – 2026",
-  fechaISO:     "2026-07-01T10:00:00",
-  fechaTexto:   "Miércoles 1 de julio de 2026",
-  horaTexto:    "10:00 AM",
+  nombre: "Isaac Gregory",
+  subtitulo: "GRADUACIÓN PRIMARIA",
+  generacion: "2020 – 2026",
+  fechaISO: "2026-07-01T10:00:00",
+  fechaTexto: "Miércoles 1 de julio de 2026",
+  horaTexto: "10:00 AM",
 
   colores: {
-    fondo:        "#0D0D0D",
-    fondoAlt:     "#161616",
-    caja:         "#1E1E1E",
-    esmeralda:    "#1B8A5A",
-    turquesa:     "#00A99D",
-    dorado:       "#D4A520",
-    texto:        "#F5F0E8",
-    textoSuave:   "#A09880",
-  },
-
-  tipografias: {
-    display: "Cinzel",
-    cuerpo:  "Nunito",
-  },
-
-  hero: {
-    // assets/photos/hero.jpg
+    fondo: "#0D0D0D",
+    fondoAlt: "#161616",
+    caja: "#1E1E1E",
+    dorado: "#D4A520",
+    texto: "#F0EDE8",
+    textoSuave: "#A09880"
   },
 
   mensajePersonal: "¡Llegó el día! Terminé la primaria y quiero celebrarlo con las personas que más quiero. Gracias por acompañarme.",
 
   familia: {
-    texto: "Mis papás Jesús Fco Hernández y Dulce Montemayor, la bendición de mi padrino Heberto Montemayor, y el cariño de mi hermano Eleazar, mi abuelita Oralia y mis tíos Carlos y Héctor que me acompañan en este momento tan importante.",
+    texto: "Mis papás Jesús Fco Hernández y Dulce Montemayor, la bendición de mi padrino Heberto Montemayor, y el cariño de mi hermano Eleazar, mi abuelita Oralia y mis tíos Carlos y Héctor que me acompañan en este momento tan importante."
   },
 
   ceremonia: {
-    nombre:    "Escuela Primaria Manuel L. Barragán",
-    fecha:     "Miércoles 1 de julio de 2026",
-    hora:      "10:00 AM",
-    mapsUrl:   "https://maps.app.goo.gl/YwucUdbMZjAeBz72A",
-    embedMapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.2!2d-100.2239108!3d25.6852061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662ea83cfe1a04d%3A0xb2ebf3583b7983d0!2sESC.%20PRIMARIA%20MANUEL%20L%20BARRAGAN!5e0!3m2!1ses!2smx!4v1" width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+    nombre: "Parroquia de la Sagrada Familia",
+    direccion: "Av. Universidad 456, Col. Centro",
+    mapsUrl: "https://maps.google.com",
+    embedMapa: '<iframe src="https://www.google.com/maps/embed" width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>'
   },
 
-  programa: [],
-
   restaurante: {
-    nombre:      "Kurai Citadel",
-    foto:        "assets/photos/kurai.jpg",
-    notaHorario: "El horario del festejo se confirma al terminar la ceremonia. ¡Te avisamos en cuanto salgamos!",
-    mapsUrl:     "https://maps.app.goo.gl/8iqRi6SreNXkNKdUA",
-    embedMapa:   `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.5!2d-100.2181057!3d25.7257641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662eb005165f135%3A0xa3af0bf03efa93e5!2sKURAI%20CITADEL!5e0!3m2!1ses!2smx!4v1" width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+    nombre: "Kurai Citadel",
+    notaHorario: "Reunión posterior a partir de las 19:30 PM",
+    direccion: "Av. Constitución 789, Plaza Citadel",
+    mapsUrl: "https://maps.google.com",
+    imagen: "gallery-5.jpg" // Lleva imagen, NO lleva mapa embed
   },
 
   dressCode: "Casual formal. Ven cómodo y bien presentado — es una celebración especial.",
@@ -59,25 +44,9 @@ const EVENT = {
     { archivo: "gallery-3.jpg", alt: "Exhibición de ciencias" },
     { archivo: "gallery-4.jpg", alt: "Día de muertos" },
     { archivo: "gallery-5.jpg", alt: "Isaac con familia" },
-    { archivo: "gallery-6.jpg", alt: "Isaac con familia" },
-    { archivo: "gallery-7.jpg", alt: "Medalla de campeón" },
-    { archivo: "gallery-8.jpg", alt: "Medalla en deportes" },
-    { archivo: "gallery-9.jpg", alt: "Cuarto de espejos" },
-  ],
-
-  confirmacion: {
-    enlace:              "https://wa.me/528110314514",
-    textoAcompanamiento: "Confírmale a mi mamá para que te tengamos bien contemplado.",
-  },
-
-  calendario: {
-    titulo:      "Graduación de Isaac Gregory",
-    descripcion: "Ceremonia de graduación primaria — Manuel L. Barragán",
-    lugar:       "Escuela Primaria Manuel L. Barragán, Guadalupe, N.L.",
-  },
-
-  musica: {
-    archivo: "assets/music/cancion.mp3",
-  },
-
+    { archivo: "gallery-6.jpg", alt: "Isaac con amigos" },
+    { archivo: "gallery-7.jpg", alt: "Momento divertido en el recreo" },
+    { archivo: "gallery-8.jpg", alt: "Proyecto final de ciclo" },
+    { archivo: "gallery-9.jpg", alt: "Último día de clases en primaria" }
+  ]
 };
