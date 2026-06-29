@@ -7,32 +7,27 @@
     contenedor.className = 'estrellas-container';
     document.body.insertBefore(contenedor, document.body.firstChild);
 
-    // SVG de estrella de 4 puntas
-    const svgEstrella = (size, color, opacity) => `
-      <svg width="${size}" height="${size}" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" style="opacity:${opacity}">
-        <polygon points="5,0 6,4 10,5 6,6 5,10 4,6 0,5 4,4" fill="${color}"/>
+    const svgEstrella = (size, opacity) =>
+      `<svg width="${size}" height="${size}" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" style="opacity:${opacity}">
+        <polygon points="5,0 6,4 10,5 6,6 5,10 4,6 0,5 4,4" fill="#D4A520"/>
       </svg>`;
 
-    const cantidad = Math.floor(Math.random() * 6) + 20; // 20-25
-
+    const cantidad = Math.floor(Math.random() * 6) + 20;
     for (let i = 0; i < cantidad; i++) {
       const wrap    = document.createElement('div');
-      const size    = (Math.random() * 6 + 4).toFixed(1);           // 4-10px
-      const left    = (Math.random() * 100).toFixed(1);              // 0-100vw
-      const dur     = (Math.random() * 7 + 7).toFixed(1);           // 7-14s
-      const delay   = -(Math.random() * 14).toFixed(1);              // ya en pantalla
-      const opacity = (Math.random() * 0.25 + 0.2).toFixed(2);      // 0.20-0.45
+      const size    = (Math.random() * 6 + 4).toFixed(1);
+      const left    = (Math.random() * 100).toFixed(1);
+      const dur     = (Math.random() * 7 + 7).toFixed(1);
+      const delay   = -(Math.random() * 14).toFixed(1);
+      const opacity = (Math.random() * 0.25 + 0.15).toFixed(2);
       const dx      = ((Math.random() - 0.5) * 50).toFixed(0) + 'px';
       const rot     = Math.random() > 0.5 ? '360deg' : '-360deg';
 
-      wrap.innerHTML = svgEstrella(size, '#D4A520', opacity);
+      wrap.innerHTML = svgEstrella(size, opacity);
       wrap.style.cssText = `
-        position: absolute;
-        left: ${left}vw;
-        top: -12px;
+        position: absolute; left: ${left}vw; top: -12px;
         animation: caerEstrella ${dur}s ${delay}s linear infinite;
-        --dx: ${dx};
-        --rot: ${rot};
+        --dx: ${dx}; --rot: ${rot};
       `;
       contenedor.appendChild(wrap);
     }
@@ -65,14 +60,13 @@
 
   // ── HERO ─────────────────────────────────────────────────
   function construirHero() {
-    // Foto de fondo
     document.getElementById('hero-foto-bg').style.backgroundImage =
       "url('assets/photos/hero.jpg')";
-
     document.getElementById('hero-nombre').textContent    = EVENT.nombre;
     document.getElementById('hero-subtitulo').textContent = EVENT.subtitulo;
-    document.getElementById('hero-generacion').textContent = `Generación ${EVENT.generacion}`;
-    document.getElementById('hero-fecha').textContent     =
+    document.getElementById('hero-generacion').textContent =
+      `GENERACIÓN ${EVENT.generacion}`;
+    document.getElementById('hero-fecha').textContent =
       `${EVENT.fechaTexto} · ${EVENT.horaTexto}`;
   }
 
@@ -98,48 +92,6 @@
   // ── FAMILIA ──────────────────────────────────────────────
   function construirFamilia() {
     document.getElementById('familia-texto').textContent = EVENT.familia.texto;
-  }
-
-  // ── CEREMONIA ────────────────────────────────────────────
-  function construirCeremonia() {
-    const c = EVENT.ceremonia;
-    document.getElementById('ceremonia-nombre').textContent    = c.nombre;
-    document.getElementById('ceremonia-fecha-hora').textContent = `${c.fecha} · ${c.hora}`;
-    document.getElementById('ceremonia-mapa').innerHTML        = c.embedMapa;
-    document.getElementById('btn-ceremonia').href              = c.mapsUrl;
-  }
-
-  // ── PROGRAMA ─────────────────────────────────────────────
-  function construirPrograma() {
-    if (!EVENT.programa || EVENT.programa.length === 0) return;
-    const sec  = document.getElementById('programa-section');
-    const list = document.getElementById('programa-lista');
-    sec.classList.remove('hidden');
-    EVENT.programa.forEach(item => {
-      const el = document.createElement('div');
-      el.className = 'programa-item';
-      el.innerHTML = `
-        <span class="programa-hora">${item.hora}</span>
-        <div>
-          <p class="programa-titulo">${item.titulo}</p>
-          ${item.descripcion ? `<p class="programa-desc">${item.descripcion}</p>` : ''}
-        </div>`;
-      list.appendChild(el);
-    });
-  }
-
-  // ── RESTAURANTE ──────────────────────────────────────────
-  function construirRestaurante() {
-    const r = EVENT.restaurante;
-    document.getElementById('restaurante-nombre').textContent = r.nombre;
-    document.getElementById('restaurante-nota').textContent   = r.notaHorario;
-    document.getElementById('restaurante-mapa').innerHTML     = r.embedMapa;
-    document.getElementById('btn-restaurante').href           = r.mapsUrl;
-  }
-
-  // ── DRESS CODE ───────────────────────────────────────────
-  function construirDressCode() {
-    document.getElementById('dresscode-texto').textContent = EVENT.dressCode;
   }
 
   // ── GALERÍA ──────────────────────────────────────────────
@@ -190,9 +142,50 @@
     stack.addEventListener('click', avanzar);
     let startX = 0;
     stack.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-    stack.addEventListener('touchend',   e => {
+    stack.addEventListener('touchend', e => {
       if (Math.abs(e.changedTouches[0].clientX - startX) > 30) avanzar();
     });
+  }
+
+  // ── CEREMONIA ────────────────────────────────────────────
+  function construirCeremonia() {
+    const c = EVENT.ceremonia;
+    document.getElementById('ceremonia-nombre').textContent     = c.nombre;
+    document.getElementById('ceremonia-fecha-hora').textContent = `${c.fecha} · ${c.hora}`;
+    document.getElementById('ceremonia-mapa').innerHTML         = c.embedMapa;
+    document.getElementById('btn-ceremonia').href               = c.mapsUrl;
+  }
+
+  // ── PROGRAMA ─────────────────────────────────────────────
+  function construirPrograma() {
+    if (!EVENT.programa || EVENT.programa.length === 0) return;
+    const sec  = document.getElementById('programa-section');
+    const list = document.getElementById('programa-lista');
+    sec.classList.remove('hidden');
+    EVENT.programa.forEach(item => {
+      const el = document.createElement('div');
+      el.className = 'programa-item';
+      el.innerHTML = `
+        <span class="programa-hora">${item.hora}</span>
+        <div>
+          <p class="programa-titulo">${item.titulo}</p>
+          ${item.descripcion ? `<p class="programa-desc">${item.descripcion}</p>` : ''}
+        </div>`;
+      list.appendChild(el);
+    });
+  }
+
+  // ── RESTAURANTE ──────────────────────────────────────────
+  function construirRestaurante() {
+    const r = EVENT.restaurante;
+    document.getElementById('restaurante-nombre').textContent = r.nombre;
+    document.getElementById('restaurante-nota').textContent   = r.notaHorario;
+    document.getElementById('btn-restaurante').href           = r.mapsUrl;
+  }
+
+  // ── DRESS CODE ───────────────────────────────────────────
+  function construirDressCode() {
+    document.getElementById('dresscode-texto').textContent = EVENT.dressCode;
   }
 
   // ── CONFIRMACIÓN ─────────────────────────────────────────
@@ -206,7 +199,7 @@
   function construirCalendario() {
     const cal = EVENT.calendario;
     const f   = new Date(EVENT.fechaISO);
-    const fin = new Date(f.getTime() + 3 * 3600000); // +3h estimadas
+    const fin = new Date(f.getTime() + 3 * 3600000);
     const fmt = d =>
       `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}` +
       `T${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}00`;
@@ -215,8 +208,7 @@
     btn.href     = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
     btn.download = 'graduacion-isaac.ics';
 
-    const url  = encodeURIComponent(window.location.href);
-    const txt  = encodeURIComponent('¡Isaac se gradúa! 🎓 Estás invitado');
+    const url = encodeURIComponent(window.location.href);
     document.getElementById('compartir-fb').href =
       `https://www.facebook.com/sharer/sharer.php?u=${url}`;
   }
@@ -229,11 +221,11 @@
     iniciarCountdown();
     construirMensaje();
     construirFamilia();
+    construirGaleria();
     construirCeremonia();
     construirPrograma();
     construirRestaurante();
     construirDressCode();
-    construirGaleria();
     construirConfirmacion();
     construirCalendario();
   });

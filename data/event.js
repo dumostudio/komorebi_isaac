@@ -1,7 +1,7 @@
 const EVENT = {
 
   nombre:       "Isaac Gregory",
-  subtitulo:    "GRADUACIÓN PRIMARIA · 2026",
+  subtitulo:    "GRADUACIÓN PRIMARIA",
   generacion:   "2020 – 2026",
   fechaISO:     "2026-07-01T10:00:00",
   fechaTexto:   "Miércoles 1 de julio de 2026",
