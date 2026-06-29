@@ -8,9 +8,9 @@ const EVENT = {
   horaTexto:    "10:00 AM",
 
   colores: {
-    fondo:        "#0D0D1A",
-    fondoAlt:     "#141428",
-    caja:         "#1A1A35",
+    fondo:        "#0D0D0D",
+    fondoAlt:     "#161616",
+    caja:         "#1E1E1E",
     esmeralda:    "#1B8A5A",
     turquesa:     "#00A99D",
     dorado:       "#D4A520",
@@ -24,13 +24,13 @@ const EVENT = {
   },
 
   hero: {
-    // assets/photos/hero.jpg — foto de graduación: toga negra, banda verde, birrete, diploma
+    // assets/photos/hero.jpg
   },
 
-  mensajePersonal: "¡Llegó el día! Terminé la primaria y quiero celebrarlo con las personas que más quiero. Gracias por estar aquí — este momento es más especial porque están ustedes.",
+  mensajePersonal: "¡Llegó el día! Terminé la primaria y quiero celebrarlo con las personas que más quiero. Gracias por acompañarme.",
 
   familia: {
-    texto: "Con el amor de mis papás Jesús Fco. Hernández y Dulce Montemayor, la bendición de mi padrino Heberto Montemayor, y el cariño de mi abuelita Oralia, mis tíos Carlos y Héctor, y mi hermano Eleazar.",
+    texto: "Mis papás Jesús Fco Hernández y Dulce Montemayor, la bendición de mi padrino Heberto Montemayor, y el cariño de mi hermano Eleazar, mi abuelita Oralia y mis tíos Carlos y Héctor que me acompañan en este momento tan importante.",
   },
 
   ceremonia: {
@@ -41,11 +41,7 @@ const EVENT = {
     embedMapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.2!2d-100.2239108!3d25.6852061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662ea83cfe1a04d%3A0xb2ebf3583b7983d0!2sESC.%20PRIMARIA%20MANUEL%20L%20BARRAGAN!5e0!3m2!1ses!2smx!4v1" width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
   },
 
-  programa: [
-    // Se activa cuando llegue el programa oficial de la escuela
-    // { hora: "10:00 AM", titulo: "Ceremonia de graduación", descripcion: "Escuela Primaria Manuel L. Barragán" },
-    // { hora: "Por confirmar", titulo: "Festejo", descripcion: "Kurai Citadel — horario a confirmar al terminar la ceremonia" },
-  ],
+  programa: [],
 
   restaurante: {
     nombre:      "Kurai Citadel",

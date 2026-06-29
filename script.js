@@ -1,6 +1,45 @@
 (function () {
   'use strict';
 
+  // ── PORTADA ────────────────────────────────────────────────
+  function iniciarPortada() {
+    const overlay = document.getElementById('portada-overlay');
+    const main = document.getElementById('main-content');
+    const audio = document.getElementById('audio-player');
+    const btn = document.getElementById('music-btn');
+    const icon = btn.querySelector('.music-icon');
+
+    if (!EVENT.musica?.archivo) return;
+
+    overlay.addEventListener('click', function entrar() {
+      // Ocultar portada
+      overlay.classList.add('ocultar');
+      main.style.display = 'block';
+
+      // Iniciar música
+      audio.src = EVENT.musica.archivo;
+      audio.play().then(() => {
+        icon.textContent = '⏸';
+      }).catch(() => {
+        icon.textContent = '▶';
+      });
+
+      // Remover evento para que no se vuelva a ejecutar
+      overlay.removeEventListener('click', entrar);
+    });
+
+    // Control manual de música
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        icon.textContent = '⏸';
+      } else {
+        audio.pause();
+        icon.textContent = '▶';
+      }
+    });
+  }
+
   // ── ESTRELLAS DORADAS ─────────────────────────────────────
   function crearEstrellas() {
     const contenedor = document.createElement('div');
@@ -14,14 +53,14 @@
 
     const cantidad = Math.floor(Math.random() * 6) + 20;
     for (let i = 0; i < cantidad; i++) {
-      const wrap    = document.createElement('div');
-      const size    = (Math.random() * 6 + 4).toFixed(1);
-      const left    = (Math.random() * 100).toFixed(1);
-      const dur     = (Math.random() * 7 + 7).toFixed(1);
-      const delay   = -(Math.random() * 14).toFixed(1);
+      const wrap = document.createElement('div');
+      const size = (Math.random() * 6 + 4).toFixed(1);
+      const left = (Math.random() * 100).toFixed(1);
+      const dur = (Math.random() * 7 + 7).toFixed(1);
+      const delay = -(Math.random() * 14).toFixed(1);
       const opacity = (Math.random() * 0.25 + 0.15).toFixed(2);
-      const dx      = ((Math.random() - 0.5) * 50).toFixed(0) + 'px';
-      const rot     = Math.random() > 0.5 ? '360deg' : '-360deg';
+      const dx = ((Math.random() - 0.5) * 50).toFixed(0) + 'px';
+      const rot = Math.random() > 0.5 ? '360deg' : '-360deg';
 
       wrap.innerHTML = svgEstrella(size, opacity);
       wrap.style.cssText = `
@@ -44,28 +83,10 @@
     document.head.appendChild(style);
   }
 
-  // ── MÚSICA ───────────────────────────────────────────────
-  function iniciarMusica() {
-    const audio = document.getElementById('audio-player');
-    const btn   = document.getElementById('music-btn');
-    const icon  = btn.querySelector('.music-icon');
-    if (!EVENT.musica?.archivo) return;
-    audio.src = EVENT.musica.archivo;
-    audio.play().then(() => { icon.textContent = '⏸'; }).catch(() => { icon.textContent = '▶'; });
-    btn.addEventListener('click', () => {
-      if (audio.paused) { audio.play(); icon.textContent = '⏸'; }
-      else              { audio.pause(); icon.textContent = '▶'; }
-    });
-  }
-
   // ── HERO ─────────────────────────────────────────────────
   function construirHero() {
     document.getElementById('hero-foto-bg').style.backgroundImage =
       "url('assets/photos/hero.jpg')";
-    document.getElementById('hero-nombre').textContent    = EVENT.nombre;
-    document.getElementById('hero-subtitulo').textContent = EVENT.subtitulo;
-    document.getElementById('hero-generacion').textContent =
-      `GENERACIÓN ${EVENT.generacion}`;
     document.getElementById('hero-fecha').textContent =
       `${EVENT.fechaTexto} · ${EVENT.horaTexto}`;
   }
@@ -73,20 +94,33 @@
   // ── COUNTDOWN ────────────────────────────────────────────
   function iniciarCountdown() {
     const meta = new Date(EVENT.fechaISO).getTime();
-    const pad  = n => String(n).padStart(2, '0');
+    const pad = n => String(n).padStart(2, '0');
     function tick() {
       const diff = Math.max(0, meta - Date.now());
-      document.getElementById('cd-dias').textContent  = pad(Math.floor(diff / 86400000));
+      document.getElementById('cd-dias').textContent = pad(Math.floor(diff / 86400000));
       document.getElementById('cd-horas').textContent = pad(Math.floor((diff % 86400000) / 3600000));
-      document.getElementById('cd-min').textContent   = pad(Math.floor((diff % 3600000) / 60000));
-      document.getElementById('cd-seg').textContent   = pad(Math.floor((diff % 60000) / 1000));
+      document.getElementById('cd-min').textContent = pad(Math.floor((diff % 3600000) / 60000));
+      document.getElementById('cd-seg').textContent = pad(Math.floor((diff % 60000) / 1000));
     }
-    tick(); setInterval(tick, 1000);
+    tick();
+    setInterval(tick, 1000);
   }
 
   // ── MENSAJE PERSONAL ─────────────────────────────────────
   function construirMensaje() {
-    document.getElementById('mensaje-personal').textContent = EVENT.mensajePersonal;
+    const el = document.getElementById('mensaje-personal');
+    const texto = EVENT.mensajePersonal;
+    // Dividir en 3 líneas
+    const partes = texto.split('. ');
+    if (partes.length >= 3) {
+      el.innerHTML = `
+        <span class="linea-1">${partes[0]}.</span>
+        <span class="linea-2">${partes[1]}.</span>
+        <span class="linea-3">${partes[2]}</span>
+      `;
+    } else {
+      el.textContent = texto;
+    }
   }
 
   // ── FAMILIA ──────────────────────────────────────────────
@@ -101,7 +135,7 @@
       document.getElementById('galeria-section').classList.add('hidden');
       return;
     }
-    const stack    = document.getElementById('galeria-stack');
+    const stack = document.getElementById('galeria-stack');
     const contador = document.getElementById('galeria-contador');
     let actual = 0;
 
@@ -150,16 +184,16 @@
   // ── CEREMONIA ────────────────────────────────────────────
   function construirCeremonia() {
     const c = EVENT.ceremonia;
-    document.getElementById('ceremonia-nombre').textContent     = c.nombre;
+    document.getElementById('ceremonia-nombre').textContent = c.nombre;
     document.getElementById('ceremonia-fecha-hora').textContent = `${c.fecha} · ${c.hora}`;
-    document.getElementById('ceremonia-mapa').innerHTML         = c.embedMapa;
-    document.getElementById('btn-ceremonia').href               = c.mapsUrl;
+    document.getElementById('ceremonia-mapa').innerHTML = c.embedMapa;
+    document.getElementById('btn-ceremonia').href = c.mapsUrl;
   }
 
   // ── PROGRAMA ─────────────────────────────────────────────
   function construirPrograma() {
     if (!EVENT.programa || EVENT.programa.length === 0) return;
-    const sec  = document.getElementById('programa-section');
+    const sec = document.getElementById('programa-section');
     const list = document.getElementById('programa-lista');
     sec.classList.remove('hidden');
     EVENT.programa.forEach(item => {
@@ -179,8 +213,8 @@
   function construirRestaurante() {
     const r = EVENT.restaurante;
     document.getElementById('restaurante-nombre').textContent = r.nombre;
-    document.getElementById('restaurante-nota').textContent   = r.notaHorario;
-    document.getElementById('btn-restaurante').href           = r.mapsUrl;
+    document.getElementById('restaurante-nota').textContent = r.notaHorario;
+    document.getElementById('btn-restaurante').href = r.mapsUrl;
   }
 
   // ── DRESS CODE ───────────────────────────────────────────
@@ -198,14 +232,14 @@
   // ── CALENDARIO Y COMPARTIR ───────────────────────────────
   function construirCalendario() {
     const cal = EVENT.calendario;
-    const f   = new Date(EVENT.fechaISO);
+    const f = new Date(EVENT.fechaISO);
     const fin = new Date(f.getTime() + 3 * 3600000);
     const fmt = d =>
       `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}` +
       `T${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}00`;
     const ics = `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTSTART:${fmt(f)}\r\nDTEND:${fmt(fin)}\r\nSUMMARY:${cal.titulo}\r\nDESCRIPTION:${cal.descripcion}\r\nLOCATION:${cal.lugar}\r\nEND:VEVENT\r\nEND:VCALENDAR`;
     const btn = document.getElementById('btn-calendario');
-    btn.href     = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
+    btn.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
     btn.download = 'graduacion-isaac.ics';
 
     const url = encodeURIComponent(window.location.href);
@@ -216,7 +250,7 @@
   // ── INIT ─────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     crearEstrellas();
-    iniciarMusica();
+    iniciarPortada();
     construirHero();
     iniciarCountdown();
     construirMensaje();

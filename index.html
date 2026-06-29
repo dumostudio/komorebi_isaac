@@ -11,7 +11,53 @@
 </head>
 <body>
 
-  <main id="main-content">
+  <!-- ============================================================
+       PORTADA — overlay de entrada (toca para entrar + música)
+  ============================================================ -->
+  <div class="portada-overlay" id="portada-overlay">
+    <div class="portada-contenido">
+      <!-- Escudo (SVG dorado) -->
+      <div class="escudo-wrap">
+        <svg class="escudo-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Fondo del escudo -->
+          <path d="M100 10 L185 55 L185 145 L100 210 L15 145 L15 55 L100 10Z" 
+                stroke="#D4A520" stroke-width="3" fill="rgba(212,165,32,0.08)"/>
+          <!-- Borde interior -->
+          <path d="M100 25 L170 63 L170 137 L100 195 L30 137 L30 63 L100 25Z" 
+                stroke="#D4A520" stroke-width="1.5" fill="none" opacity="0.5"/>
+          <!-- Línea horizontal superior -->
+          <line x1="45" y1="80" x2="155" y2="80" stroke="#D4A520" stroke-width="1.5" opacity="0.6"/>
+          <line x1="55" y1="88" x2="145" y2="88" stroke="#D4A520" stroke-width="1" opacity="0.4"/>
+          <!-- Texto dentro del escudo -->
+          <text x="100" y="72" text-anchor="middle" font-family="Cinzel, serif" font-size="14" font-weight="700" fill="#D4A520" letter-spacing="1">ESCUELA</text>
+          <text x="100" y="90" text-anchor="middle" font-family="Cinzel, serif" font-size="14" font-weight="700" fill="#D4A520" letter-spacing="1">PRIMARIA</text>
+          <text x="100" y="118" text-anchor="middle" font-family="Cinzel, serif" font-size="16" font-weight="700" fill="#D4A520" letter-spacing="0.5">MANUEL L.</text>
+          <text x="100" y="140" text-anchor="middle" font-family="Cinzel, serif" font-size="18" font-weight="700" fill="#D4A520" letter-spacing="1">BARRAGÁN</text>
+          <text x="100" y="170" text-anchor="middle" font-family="Cinzel, serif" font-size="11" font-weight="400" fill="#D4A520" letter-spacing="2" opacity="0.7">T.M.</text>
+          <!-- Estrella decorativa abajo -->
+          <polygon points="100,178 102,185 110,185 104,190 106,198 100,193 94,198 96,190 90,185 98,185" 
+                   fill="#D4A520" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <!-- Texto de graduación -->
+      <h1 class="portada-titulo">GRADUACIÓN</h1>
+      <p class="portada-generacion">GENERACIÓN 2020 – 2026</p>
+      <p class="portada-fecha">Miércoles 1 de Julio de 2026 · 10:00 AM</p>
+
+      <!-- Línea decorativa -->
+      <div class="portada-linea"></div>
+
+      <!-- Call to action -->
+      <p class="portada-cta">Toca para entrar</p>
+      <div class="portada-flecha">▼</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MAIN — contenido principal (oculto hasta tocar portada)
+  ============================================================ -->
+  <main id="main-content" style="display:none;">
 
     <!-- Botón música flotante -->
     <div class="music-bar" id="music-bar">
@@ -22,17 +68,14 @@
     </div>
 
     <!-- =====================================================
-         HERO — foto pantalla completa, texto al fondo
+         HERO — foto pantalla completa
     ====================================================== -->
     <section class="hero" id="hero">
       <div class="hero-foto-bg" id="hero-foto-bg"></div>
       <div class="hero-overlay"></div>
       <div class="hero-fade"></div>
       <div class="hero-content">
-        <h1 class="hero-nombre" id="hero-nombre"></h1>
-        <p class="hero-subtitulo" id="hero-subtitulo"></p>
-        <p class="hero-generacion" id="hero-generacion"></p>
-        <p class="hero-fecha" id="hero-fecha"></p>
+        <h1 class="hero-nombre" id="hero-nombre">ISAAC GREGORY</h1>
         <div class="countdown-wrap">
           <div class="countdown-grid">
             <div class="countdown-item">
@@ -56,14 +99,17 @@
             </div>
           </div>
         </div>
+        <p class="hero-fecha" id="hero-fecha"></p>
       </div>
     </section>
 
     <!-- =====================================================
-         MENSAJE PERSONAL — Cinzel grande, media pantalla
+         MENSAJE PERSONAL
     ====================================================== -->
     <section class="mensaje-section seccion-base">
-      <p class="seccion-mensaje" id="mensaje-personal"></p>
+      <div class="mensaje-caja">
+        <p class="seccion-mensaje" id="mensaje-personal"></p>
+      </div>
     </section>
 
     <!-- =====================================================
@@ -71,11 +117,13 @@
     ====================================================== -->
     <section class="familia-section seccion-alt">
       <p class="seccion-label">CON EL AMOR DE</p>
-      <p class="familia-texto" id="familia-texto"></p>
+      <div class="familia-caja">
+        <p class="familia-texto" id="familia-texto"></p>
+      </div>
     </section>
 
     <!-- =====================================================
-         GALERÍA — entre familia y ceremonia
+         GALERÍA
     ====================================================== -->
     <section class="galeria-section seccion-base" id="galeria-section">
       <p class="seccion-titulo">INSTANTES DE ISAAC</p>
@@ -85,7 +133,7 @@
     </section>
 
     <!-- =====================================================
-         CEREMONIA — sin título exterior
+         CEREMONIA
     ====================================================== -->
     <section class="ceremonia-section seccion-alt" id="ceremonia-section">
       <div class="evento-card">
@@ -98,7 +146,7 @@
     </section>
 
     <!-- =====================================================
-         RESTAURANTE — sin título exterior, sin mapa
+         RESTAURANTE
     ====================================================== -->
     <section class="restaurante-section seccion-alt" id="restaurante-section">
       <div class="evento-card">
@@ -113,7 +161,7 @@
     </section>
 
     <!-- =====================================================
-         PROGRAMA — invisible hasta tener horarios
+         PROGRAMA
     ====================================================== -->
     <section class="programa-section seccion-base hidden" id="programa-section">
       <p class="seccion-titulo">PROGRAMA</p>
@@ -124,14 +172,15 @@
          DRESS CODE
     ====================================================== -->
     <section class="dresscode-section seccion-alt" id="dresscode-section">
-      <p class="seccion-titulo">CÓDIGO DE VESTIMENTA</p>
       <div class="dresscode-card">
+        <p class="dresscode-titulo">CÓDIGO DE VESTIMENTA</p>
+        <div class="dresscode-linea"></div>
         <p class="dresscode-texto" id="dresscode-texto"></p>
       </div>
     </section>
 
     <!-- =====================================================
-         CONFIRMACIÓN — caja
+         CONFIRMACIÓN
     ====================================================== -->
     <section class="confirmacion-section seccion-base">
       <div class="caja">
@@ -147,7 +196,7 @@
     </section>
 
     <!-- =====================================================
-         CALENDARIO — caja
+         CALENDARIO
     ====================================================== -->
     <section class="calendario-section seccion-base">
       <div class="caja">
