@@ -1,0 +1,364 @@
+/* ============================================================
+   Invitación Graduación Isaac Gregory — style.css
+   Paleta oscura Hollywood · Cinzel + Nunito
+   ============================================================ */
+
+:root {
+  --fondo:        #0D0D1A;
+  --fondo-alt:    #141428;
+  --caja:         #1A1A35;
+  --esmeralda:    #1B8A5A;
+  --turquesa:     #00A99D;
+  --dorado:       #D4A520;
+  --texto:        #F5F0E8;
+  --texto-suave:  #A09880;
+
+  --font-display: 'Cinzel', serif;
+  --font-cuerpo:  'Nunito', sans-serif;
+
+  --radius-caja: 20px;
+  --radius-btn:  50px;
+  --max-width:   480px;
+  --padding-x:   24px;
+  --padding-y:   56px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--fondo);
+  color: var(--texto);
+  font-family: var(--font-cuerpo);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+.hidden { display: none !important; }
+main { position: relative; z-index: 1; }
+
+/* ── Secciones ── */
+section {
+  width: 100%;
+  padding: var(--padding-y) var(--padding-x);
+}
+section > * { max-width: var(--max-width); margin-left: auto; margin-right: auto; }
+.seccion-base { background: var(--fondo); }
+.seccion-alt  { background: var(--fondo-alt); }
+
+/* ── Caja ── */
+.caja {
+  background: var(--caja);
+  border-radius: var(--radius-caja);
+  padding: 28px;
+  margin: 0 auto;
+  max-width: calc(var(--max-width) - 32px);
+  text-align: center;
+}
+
+/* ── MÚSICA ── */
+.music-bar { position: fixed; top: 14px; right: 14px; z-index: 200; }
+.music-btn {
+  width: 42px; height: 42px; border-radius: 50%; border: none;
+  background: var(--dorado); color: #0D0D1A; font-size: 16px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 3px 14px rgba(212,165,32,0.4); transition: filter 0.2s;
+}
+.music-btn:hover { filter: brightness(1.15); }
+
+/* ── ESTRELLAS (partículas) ── */
+.estrellas-container {
+  position: fixed; top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100svh; min-height: 100vh;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.hero-foto-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center top;
+  background-color: var(--fondo-alt);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: rgba(13, 13, 26, 0.35);
+}
+.hero-content {
+  position: relative; z-index: 1;
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: space-between;
+  padding: 60px var(--padding-x) 32px;
+  text-align: center;
+}
+/* Bloque superior: texto */
+.hero-texto-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.hero-logro {
+  font-family: var(--font-cuerpo);
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--dorado);
+}
+.hero-nombre {
+  font-family: var(--font-display);
+  font-size: 52px; font-weight: 700;
+  color: var(--dorado); line-height: 1;
+}
+.hero-subtitulo {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--turquesa);
+}
+.hero-generacion {
+  font-family: var(--font-cuerpo);
+  font-size: 12px; font-weight: 300;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.hero-fecha {
+  font-family: var(--font-cuerpo);
+  font-size: 15px; font-weight: 300;
+  color: var(--texto-suave);
+  margin-top: 4px;
+}
+
+/* Countdown al fondo del hero */
+.countdown-wrap { width: 100%; }
+.countdown-grid {
+  display: flex; justify-content: center; align-items: center;
+  gap: 6px; max-width: 300px; margin: 0 auto;
+}
+.countdown-item {
+  display: flex; flex-direction: column; align-items: center;
+  background: rgba(26, 26, 53, 0.75);
+  border: 1px solid rgba(212, 165, 32, 0.25);
+  border-radius: 12px;
+  width: 60px; padding: 10px 0;
+  backdrop-filter: blur(4px);
+}
+.countdown-num {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 700;
+  color: var(--dorado); line-height: 1;
+}
+.countdown-label {
+  font-size: 9px; font-weight: 300;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--texto-suave); margin-top: 2px;
+}
+.countdown-sep {
+  font-size: 28px; font-weight: 700;
+  color: var(--dorado); margin-bottom: 16px;
+}
+
+/* ── TÍTULOS DE SECCIÓN ── */
+.seccion-titulo {
+  font-family: var(--font-cuerpo);
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--dorado);
+  text-align: center;
+  margin-bottom: 24px;
+}
+.seccion-label {
+  font-family: var(--font-cuerpo);
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--texto-suave);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* ── MENSAJE PERSONAL ── */
+.seccion-mensaje {
+  font-size: 17px; font-weight: 400;
+  color: var(--texto); line-height: 1.8;
+  text-align: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ── FAMILIA ── */
+.familia-section { text-align: center; }
+.familia-texto {
+  font-size: 17px; font-weight: 400;
+  color: var(--texto); line-height: 1.8;
+  max-width: var(--max-width); margin: 0 auto;
+}
+
+/* ── EVENTO CARD (ceremonia y restaurante) ── */
+.evento-card {
+  background: var(--caja);
+  border-radius: var(--radius-caja);
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  max-width: var(--max-width); margin: 0 auto;
+}
+.evento-tipo {
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--turquesa);
+}
+.evento-nombre {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700;
+  color: var(--texto);
+}
+.evento-detalle {
+  font-size: 15px; font-weight: 300;
+  color: var(--texto-suave);
+}
+.evento-nota {
+  font-size: 15px; font-weight: 400;
+  color: var(--texto-suave);
+  font-style: italic;
+}
+.mapa-embed { border-radius: 12px; overflow: hidden; }
+.mapa-embed iframe { display: block; }
+
+/* ── PROGRAMA ── */
+.programa-lista { display: flex; flex-direction: column; gap: 12px; max-width: var(--max-width); margin: 0 auto; }
+.programa-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--caja);
+  border-radius: 12px; padding: 14px 16px;
+}
+.programa-hora { font-family: var(--font-display); font-weight: 700; color: var(--dorado); white-space: nowrap; min-width: 70px; font-size: 14px; }
+.programa-titulo { font-weight: 700; color: var(--texto); font-size: 15px; }
+.programa-desc { font-size: 14px; color: var(--texto-suave); margin-top: 2px; }
+
+/* ── DRESS CODE ── */
+.dresscode-section { text-align: center; }
+.dresscode-card {
+  background: var(--caja);
+  border-radius: var(--radius-caja);
+  padding: 24px;
+  max-width: var(--max-width); margin: 0 auto;
+}
+.dresscode-texto { font-size: 17px; color: var(--texto); }
+
+/* ── GALERÍA ── */
+.galeria-section { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.galeria-section > * { max-width: none; margin: 0; }
+.galeria-contador {
+  font-size: 10px; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--texto-suave);
+  background: var(--caja); border-radius: 20px; padding: 4px 16px;
+}
+.galeria-stack {
+  position: relative; width: 270px; height: 360px;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.galeria-card {
+  position: absolute; inset: 0;
+  background: #1a1a2e;
+  border-radius: 3px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  padding: 10px 10px 48px;
+  transition: transform 0.15s ease;
+}
+.galeria-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+.galeria-card:nth-child(2) { transform: rotate(3.5deg) translateY(5px); }
+.galeria-card:nth-child(3) { transform: rotate(-2.5deg) translateY(8px); }
+.galeria-card:nth-child(4) { transform: rotate(1.8deg) translateY(10px); }
+.galeria-card.activa { transform: rotate(0deg) translateY(0); z-index: 10; }
+.galeria-card.saliendo { animation: cardSalida 0.25s ease forwards; }
+@keyframes cardSalida {
+  0%   { transform: translateX(0) rotate(0); opacity: 1; }
+  100% { transform: translateX(-70px) rotate(-10deg); opacity: 0; }
+}
+.galeria-hint { font-size: 1.1rem; opacity: 0.35; animation: bounce 2s ease-in-out infinite; }
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+/* ── CONFIRMACIÓN ── */
+.confirmacion-section { text-align: center; }
+.confirmacion-copy { font-size: 17px; color: var(--texto); margin-bottom: 20px; line-height: 1.6; }
+
+/* ── CALENDARIO ── */
+.calendario-section { text-align: center; }
+.calendario-hint { font-size: 15px; color: var(--texto-suave); margin-bottom: 16px; }
+.compartir-hint { font-size: 14px; color: var(--texto-suave); margin-top: 16px; margin-bottom: 12px; }
+.compartir-iconos { display: flex; justify-content: center; gap: 16px; }
+.compartir-iconos a { opacity: 0.75; transition: opacity 0.2s; }
+.compartir-iconos a:hover { opacity: 1; }
+
+/* ── BOTONES ── */
+.btn-primario, .btn-secundario {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 14px 24px;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-cuerpo); font-size: 15px; font-weight: 700;
+  cursor: pointer; border: none; transition: filter 0.2s;
+}
+.btn-primario {
+  background: var(--dorado); color: #0D0D1A;
+}
+.btn-primario:hover { filter: brightness(1.12); }
+.btn-primario:active { filter: brightness(0.9); }
+
+.btn-secundario {
+  background: transparent; color: var(--dorado);
+  border: 2px solid var(--dorado);
+}
+.btn-secundario:hover { background: rgba(212,165,32,0.08); }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 40px var(--padding-x);
+  font-size: 14px; font-weight: 300;
+  color: var(--texto-suave);
+}
+.footer-corazon { color: var(--dorado); }
+
+/* ── SEPARADOR DORADO ── */
+.separador {
+  width: 60px; height: 1px;
+  background: var(--dorado);
+  opacity: 0.4;
+  margin: 0 auto 24px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 360px) {
+  .hero-nombre   { font-size: 42px; }
+  .countdown-num { font-size: 26px; }
+  .countdown-item { width: 52px; }
+  .galeria-stack  { width: 240px; height: 320px; }
+}
+@media (min-width: 481px) {
+  body { display: flex; flex-direction: column; align-items: center; background: #050510; }
+  main { max-width: var(--max-width); width: 100%; }
+  section { max-width: var(--max-width); }
+  .hero { max-width: var(--max-width); }
+  .music-bar { right: calc(50% - var(--max-width)/2 + 14px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ── FOTO DEL LUGAR ── */
+.salon-foto-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.salon-foto {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
